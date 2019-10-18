@@ -1,0 +1,35 @@
+/* 
+This is an algorithm that performs the following:
+
+1. gets an array with two values
+2. returns the sum of these values + the numbers in between them:
+
+i.e arr [1,4] => [1,2,3,4] => returns 10
+
+*/
+    var sumOfNum = (arr) => {
+        let max = Math.max(...arr);
+        let min = Math.min(...arr);
+        
+        return (max * (max + 1) - min * (min - 1)) / 2
+       
+    }
+
+    console.log(sumOfNum([1,4])) // returns 10
+
+/* 
+In a more detailed way it could look like this:
+in this other sintax the function actually creates a new array, 
+pushes the values that we want to uncover and then it sums the values and returns the total. 
+Its not so polished, but it seems easier to understand comparing to the crude math calculation above*/
+
+var test = (arr) => {
+    let max = Math.max(...arr);
+    let min = Math.min(...arr);
+    let newArr = [];
+    for (let i = min; i <= max; i++) { newArr.push(min++) }
+    return newArr.reduce(function(a,b) {return a+b})
+    };
+    
+    console.log(test([1,4])); //returns 10
+
